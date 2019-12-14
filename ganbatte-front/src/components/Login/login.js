@@ -110,37 +110,36 @@ class Login extends Component {
                     </>
 
 
-                ) : (
-                        <div className={'container'}>
+                ) : (<div className={'container'}>
 
-                            <form onSubmit={this.handleInputOnSubmit}>
-                                <div className={'login'} >
+                    <form onSubmit={this.handleInputOnSubmit}>
+                        <div className={'login'} >
 
-                                    <input
-                                        type='text'
-                                        name='email'
-                                        placeholder='Username'
-                                        className={'input1'}
-                                        onChange={this.handleInputOnChange}
+                            <input
+                                type='text'
+                                name='email'
+                                placeholder='Username'
+                                className={'input1'}
+                                onChange={this.handleInputOnChange}
 
-                                    />
-                                    <input
-                                        type='text'
-                                        name='password'
-                                        placeholder='Password'
-                                        className={'input2'}
-                                        onChange={this.handleInputOnChange}
+                            />
+                            <input
+                                type='text'
+                                name='password'
+                                placeholder='Password'
+                                className={'input2'}
+                                onChange={this.handleInputOnChange}
 
-                                    />
+                            />
 
-                                </div>
+                        </div>
 
-                            </form>
-                            {/* <span>Window size: {this.state.width} x {this.state.height}</span> */}
-                            <div className={'loginButton'} >
-                                <div onClick={this.changeImage} className={btn_class}> </div>
-                            </div>
-                        </div >
+                    </form>
+                    {/* <span>Window size: {this.state.width} x {this.state.height}</span> */}
+                    <div className={'loginButton'} >
+                        <div onClick={this.changeImage} className={btn_class}> </div>
+                    </div>
+                </div >
 
 
                     )
