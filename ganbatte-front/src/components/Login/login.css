@@ -1,0 +1,74 @@
+.container{
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction:  column;
+/* background-color:red; */
+background-image: url('/ganbatteFrame.png');
+  background-position: center;
+  background-size: 99% 99%;
+    background-repeat: no-repeat;
+width:100vw;
+height: 100vh;
+overflow: hidden;
+    border:1px solid red;
+
+}
+
+
+.login { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+align-items: center;
+    width:250px;
+    height:120px;
+    
+background-image: url('/signIn.jpg');
+background-position: center;
+  background-size: contain;
+    background-repeat: no-repeat;
+    /* flex-grow: 1; */
+    
+}
+
+.signIn{
+    /* z-index: 1; */
+    position: absolute;
+    width:50px;
+    height: 50px;
+    border:1px solid red;
+    background-color:red;
+    top:57%;
+}                                                                      
+
+ .input1{
+     border:none;
+     height: 20px;
+    width:140px;
+     background:transparent;
+    color: black;
+    font-size: 15px;
+    outline:none;
+ }
+ .input2{
+     height: 20px;
+    width:140px;
+     margin-top: 8px;
+     margin-bottom: 14px;
+     background:transparent;
+     border:none;
+     color: black;
+    font-size: 15px;
+    outline:none;
+ }
+
+ input:focus::placeholder {
+  color: transparent;
+} 
+
+.loginButton{
+    width:50px;
+    height: 50px;
+    border: 1px solid black;
+}
