@@ -11,12 +11,12 @@ background-image: url('/ganbatteFrame.png');
 width:100vw;
 height: 100vh;
 overflow: hidden;
-    border:1px solid red;
 
 }
 
 
 .login { 
+    margin-top:100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -37,8 +37,7 @@ background-position: center;
     position: absolute;
     width:50px;
     height: 50px;
-    border:1px solid red;
-    background-color:red;
+    
     top:57%;
 }                                                                      
 
@@ -50,8 +49,11 @@ background-position: center;
     color: black;
     font-size: 15px;
     outline:none;
+    text-align: center;
  }
  .input2{
+    text-align: center;
+
      height: 20px;
     width:140px;
      margin-top: 8px;
@@ -68,7 +70,39 @@ background-position: center;
 } 
 
 .loginButton{
-    width:50px;
-    height: 50px;
-    border: 1px solid black;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    /* justify-content: flex-end; */
+    /* padding-top:50px; */
+    width:100px;
+    height: 10px;
+    /* border: 1px solid black; */
+}
+
+.submit{
+    flex-grow: 1;
+    margin-top:150px;
+    background-image: url('/fliptoSign1.jpg');
+  background-position: center;
+  background-size: 99% 99%;
+    background-repeat: no-repeat;
+    width:200px;
+    height: 60px;
+    border:none;
+    outline:none;
+
+}
+.submit2{
+    flex-grow: 1;
+    margin-top:150px;
+    background-image: url('/fliptoSign2.jpg');
+  background-position: center;
+  background-size: 99% 99%;
+    background-repeat: no-repeat;
+    width:200px;
+    height: 60px;
+    border:none;
+    outline:none;
+
 }
