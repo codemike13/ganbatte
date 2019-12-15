@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './ganbatte.css'
-
+import NavPanel from '../Nav/navPanel'
 import setAuthJWT from '../../api/setAuthJWT'
 
 class Ganbatte extends Component {
@@ -29,6 +29,7 @@ class Ganbatte extends Component {
         return (
             <div className={'batteContainer'}>
                 <>
+                    <NavPanel />
                     <span>
                         {this.state.loggedInEmail}
                     </span>

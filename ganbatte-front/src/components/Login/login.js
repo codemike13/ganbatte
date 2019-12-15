@@ -18,11 +18,11 @@ class Login extends Component {
             isAuth: false,
             loggedInEmail: '',
             formValid: false,
-            emailValid: false,
-            passValid: false,
+            emailValid: true,
+            passValid: true,
             errorMessage: false,
             errorToggle: false,
-            pane: ""
+            pane: "url('/ganbatteFrame.png')"
         }
     }
 
@@ -47,7 +47,7 @@ class Login extends Component {
     validateField(name, value) {
 
         let pValid, eValid
-        const emailCheck = RegExp(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/)
+        const emailCheck = RegExp(/^([\w .%+-]+)@([\w-]+\.)+([\w]{2,})$/)
 
         let noErrorPane = "url('/ganbatteFrame.png')"
         let eNotVal = "url('/wrongEmail.png')"
@@ -156,6 +156,12 @@ class Login extends Component {
         })
     }
 
+    incorrectEmail = () => {
+        return (
+            <div className="error"> </div>
+        )
+
+    }
 
 
     render() {
@@ -164,10 +170,11 @@ class Login extends Component {
         let touched = this.state.touched ? "submit touched" : "submit";
         return (
             <>
-                {/* <div className={'loginContainer'}> */}
-                <div style={styles.loginContainer}>
+                <div style={{ backgroundImage: this.state.pane }} className={'loginContainer'}>
+                    {/* <div style={styles.loginContainer}> */}
 
 
+                    {/* {!this.state.emailValid ? this.incorrectEmail() : ""} */}
                     <form onSubmit={this.handleInputOnSubmit}>
                         <div className={'login'} >
 

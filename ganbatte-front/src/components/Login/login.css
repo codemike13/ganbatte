@@ -4,7 +4,7 @@ justify-content: center;
 align-items: center;
 flex-direction:  column;
 /* background-color:red; */
-background-image: url('/ganbatteFrame.png');
+/* background-image: url('/ganbatteFrame.png'); */
   background-position: center;
   background-size: 99% 99%;
     background-repeat: no-repeat;
@@ -16,17 +16,16 @@ overflow: hidden;
 
 
 .login { 
-    margin-top:100px;
+    margin-top:150px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-align-items: center;
+    align-items: center;
     width:250px;
     height:120px;
-    
-background-image: url('/signIn.jpg');
-background-position: center;
-  background-size: contain;
+    background-image: url('/signIn.jpg');
+    background-position: center;
+    background-size: contain;
     background-repeat: no-repeat;
     /* flex-grow: 1; */
     
@@ -45,7 +44,7 @@ background-position: center;
      border:none;
      height: 20px;
     width:140px;
-     background:transparent;
+     background:none;
     color: black;
     font-size: 15px;
     outline:none;
@@ -107,6 +106,16 @@ background-position: center;
     height: 60px;
     border:none;
     outline:none;
+}
+
+.error{
+    margin-bottom: -10%;
+    width:80%;
+    height: 70px;
+    text-align: center;
+    background-image: url('/wrongEmail.gif');
+    background-size: 100% 100%;
+    background-position: center;
 }
 
 .submit:active {
