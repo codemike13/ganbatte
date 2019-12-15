@@ -1,0 +1,15 @@
+.batteContainer{
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction:  column;
+/* background-color:red; */
+background-image: url('/basicFrame.png');
+  background-position: center;
+  background-size: 99% 99%;
+    background-repeat: no-repeat;
+width:100vw;
+height: 100vh;
+overflow: hidden;
+
+}

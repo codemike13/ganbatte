@@ -1,4 +1,4 @@
-.container{
+.loginContainer{
 display: flex;
 justify-content: center;
 align-items: center;
@@ -71,38 +71,44 @@ background-position: center;
 
 .loginButton{
     align-self: center;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     /* justify-content: flex-end; */
     /* padding-top:50px; */
-    width:100px;
+    width:100%;
     height: 10px;
-    /* border: 1px solid black; */
 }
 
 .submit{
     flex-grow: 1;
     margin-top:150px;
     background-image: url('/fliptoSign1.jpg');
-  background-position: center;
-  background-size: 99% 99%;
+    background-position: center;
+    background-size: 50% 100%;
+    background-color: transparent;
     background-repeat: no-repeat;
-    width:200px;
+    width:100px;
     height: 60px;
     border:none;
     outline:none;
-
+    transition:
+                transform 150ms ease;
 }
-.submit2{
-    flex-grow: 1;
+
+.touched{
+  flex-grow: 1;
     margin-top:150px;
     background-image: url('/fliptoSign2.jpg');
-  background-position: center;
-  background-size: 99% 99%;
+    background-position: center;
+    background-size: 50% 100%;
+    background-color: transparent;
     background-repeat: no-repeat;
-    width:200px;
+    width:100px;
     height: 60px;
     border:none;
     outline:none;
+}
 
+.submit:active {
+    /* transform: scale(0.99); */
 }

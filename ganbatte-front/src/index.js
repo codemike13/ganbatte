@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Login from './components/Login/login'
+import Ganbatte from './components/Ganbatte/ganbatte'
 
 
 class App extends Component {
@@ -20,13 +21,33 @@ class App extends Component {
             isAuth: false
         })
     }
+
+
     render() {
         return (
             <>
-                <Login
-                    appHandleAuthSubmit={this.appHandleAuthSubmit}
-                    appHandleLogout={this.appHandleLogout}
-                />
+                <div className={'container'}>
+
+                    {this.state.isAuth ? (
+                        <>
+                            <Ganbatte
+                                auth={this.state.isAuth}
+                                appHandleLogout={this.appHandleLogout}
+                            />
+
+
+                        </>
+                    ) : (
+                            <Login
+
+                                appHandleAuthSubmit={this.appHandleAuthSubmit}
+                                appHandleLogout={this.appHandleLogout}
+                            />
+
+                        )}
+
+
+                </div>
             </>
         )
 
