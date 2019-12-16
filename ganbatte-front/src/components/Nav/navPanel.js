@@ -42,7 +42,7 @@ export default class FoodBox extends Component {
                     containerOpacity={0.9}
                     open={openBox}
                     onRequestClose={this.toggle("openBox", false)}
-                    direction={'bottom'}
+                    direction={'left'}
                 >
                     <div className={'fileUpload'}>
                         I'm in a drawer!

@@ -28,18 +28,26 @@ class Ganbatte extends Component {
     render() {
         return (
             <div className={'batteContainer'}>
-                <>
-                    <NavPanel />
-                    <span>
-                        {this.state.loggedInEmail}
-                    </span>
-                    <button
-                        className='btn btn-warning'
-                        onClick={this.logOut}
-                    >
+                <div className={'content'}>
+                    <div className={'boxes'}>  <button className='btn btn-warning' onClick={this.logOut}>
                         Log out
-                        </button>
-                </>
+                        </button></div>
+                    <div className={'boxes'}>2</div>
+                    <div className={'boxes'}>3</div>
+                    <div className={'boxes'}>4</div>
+                    <div className={'boxes'}>5</div>
+                    <div className={'boxes'}>6</div>
+                    <div className={'boxes'}>7</div>
+                    <div className={'boxes'}>1</div>
+                    <div className={'boxes'}>2</div>
+                    <div className={'boxes'}>3</div>
+                    <div className={'boxes'}>4</div>
+                    <div className={'boxes'}>5</div>
+                    <div className={'boxes'}>6</div>
+                    <div className={'boxes'}>7</div>
+
+                </div>
+
 
 
             </div>

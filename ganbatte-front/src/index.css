@@ -18,8 +18,13 @@ code {
 .container{
 display: flex;
 
-
-width:100%;
+background-image: url('/basicFrame2.png');
+  background-position: center;
+  background-size: 100% 100%;
+    background-repeat: no-repeat;
+width:100vw;
 height: 100vh;
 overflow: hidden;
 }
+
+

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Login from './components/Login/login'
 import Ganbatte from './components/Ganbatte/ganbatte'
+import NavPanel from './components/Nav/navPanelResize'
 
 
 class App extends Component {
@@ -27,13 +28,31 @@ class App extends Component {
         return (
             <>
                 <div className={'container'}>
-
-                    {this.state.isAuth ? (
-                        <>
+                    <>
+                        <NavPanel >
                             <Ganbatte
                                 auth={this.state.isAuth}
                                 appHandleLogout={this.appHandleLogout}
                             />
+
+
+                        </NavPanel>
+
+
+
+                    </>
+                    {/* 
+                    {this.state.isAuth ? (
+                        <>
+                            <NavPanel >
+                                <Ganbatte
+                                    auth={this.state.isAuth}
+                                    appHandleLogout={this.appHandleLogout}
+                                />
+
+
+                            </NavPanel>
+
 
 
                         </>
@@ -44,7 +63,7 @@ class App extends Component {
                                 appHandleLogout={this.appHandleLogout}
                             />
 
-                        )}
+                        )} */}
 
 
                 </div>

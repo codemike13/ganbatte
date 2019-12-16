@@ -1,0 +1,121 @@
+/* .Container {
+    display: flex;
+    align-items: stretch;
+} */
+.ContainerHorizontal {
+    composes: Container;
+    flex-flow: row nowrap;
+    flex-direction: row;
+    height: 100%;
+}
+.ContainerVertical {
+    composes: Container;
+    flex-flow: column nowrap;
+}
+.ResizeContent {
+    flex-grow: 1;
+    align-self: stretch;
+    display: flex;
+}
+.ResizeContentVertical {
+    flex-flow: column;
+}
+.ResizeContentHorizontal {
+    flex-flow: row;
+}
+    
+.ResizeBarHorizontal {
+    cursor: ew-resize;
+    width: 100%;
+   overflow: hidden;
+    background: transparent;
+    display: flex;
+    z-index: 10;
+    align-items: center ;
+    align-content: center ;
+    justify-content: center;
+flex-shrink: 1;
+}
+
+
+.ResizeHandleHorizontal {
+    cursor: ew-resize;
+    width: 120px;
+    height: 150px;
+    background: white;
+    border: 2px solid lightgray;
+    border-radius: 8px;
+    text-align: center;
+    z-index: 10;
+    overflow: hidden;
+    display: flex;
+    align-items: center ;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ResizeBarVertical {
+    cursor: ns-resize;
+    height: 20px;
+    margin-top: -10px;
+    margin-bottom: -10px;
+    background: transparent;
+    display: flex;
+    z-index: 10;
+    align-items: center ;
+    align-content: center ;
+    justify-content: center;
+
+}
+
+
+.ResizeHandleVertical {
+    cursor: ns-resize;
+    width:150px;
+    height: 12px;
+    border-radius: 8px;
+    background: white;
+    border: 2px solid lightgray;
+    z-index: 10;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+
+}
+
+.ResizeHandleHorizontal>span, .ResizeHandleVertical>span {
+    display: inline-block;
+    overflow: hidden;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    color: #b3b3b3;
+    text-shadow: 1px 0 1px rgb(90, 90, 90);
+}
+.ResizeHandleHorizontal>span {
+    line-height: 4px;
+}
+.ResizeHandleVertical>span {
+    text-align: center;
+    line-height: 12px;
+    margin-top: -3px;
+}
+.ResizeHandleHorizontal>span::after{
+    content: '. . . . . . . .';
+}
+.ResizeHandleVertical>span::after{
+    content: '......';
+}

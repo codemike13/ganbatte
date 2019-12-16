@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './login.css'
-import { apiHandleSignUpAndLogIn } from '../../api/api';
+import { apiAuth, apiHandleSignUpAndLogIn } from '../../api/api';
 import setAuthJWT from '../../api/setAuthJWT'
 
 
@@ -29,11 +29,18 @@ class Login extends Component {
     updateDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
     };
-    componentDidMount = () => {
-        window.addEventListener('resize', this.updateDimensions);
-        // this.setPane()
-
-    }
+    // componentDidMount = () => {
+    //     apiAuth()
+    //         .then(userObj => {
+    //             this.setState({
+    //                 isAuth: true,
+    //                 loggedInEmail: userObj.email
+    //             }, () => {
+    //                 this.props.appHandleAuthSubmit()
+    //             })
+    //         })
+    //         .catch(err => console.log(err))
+    // }
 
     handleInputOnChange = (event) => {
         let name = event.target.name
