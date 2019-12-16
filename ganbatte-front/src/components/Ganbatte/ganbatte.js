@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import './ganbatte.css'
 import NavPanel from '../Nav/navPanel'
 import setAuthJWT from '../../api/setAuthJWT'
+import { DragDropContainer, DropTarget } from 'react-drag-drop-container';
+
 
 class Ganbatte extends Component {
     constructor(props) {
@@ -24,28 +26,55 @@ class Ganbatte extends Component {
         })
     }
 
+    dropped(e) {
+        e.containerElem.style.visibility = 'hidden';
+    }
+
 
     render() {
         return (
             <div className={'batteContainer'}>
-                <div className={'content'}>
-                    <div className={'boxes'}>  <button className='btn btn-warning' onClick={this.logOut}>
-                        Log out
-                        </button></div>
-                    <div className={'boxes'}>2</div>
-                    <div className={'boxes'}>3</div>
-                    <div className={'boxes'}>4</div>
-                    <div className={'boxes'}>5</div>
-                    <div className={'boxes'}>6</div>
-                    <div className={'boxes'}>7</div>
-                    <div className={'boxes'}>1</div>
-                    <div className={'boxes'}>2</div>
-                    <div className={'boxes'}>3</div>
-                    <div className={'boxes'}>4</div>
-                    <div className={'boxes'}>5</div>
-                    <div className={'boxes'}>6</div>
-                    <div className={'boxes'}>7</div>
+                <div className={'contentWrapper'}>
 
+                    <DropTarget
+                        targetKey="foo"
+                        onHit={this.dropped}
+                        on>
+                        <section className={'enlarge'}>
+                            enlarger zone
+                        </section>
+                    </DropTarget>
+                    <div className={'content'}>
+
+
+                        <DragDropContainer
+                            size={this.props.size}
+                            targetKey='foo'
+                        >
+                            <div className={'boxes'}>  <button className='btn btn-warning' onClick={this.logOut}>
+                                Log out
+                        </button></div>
+                        </DragDropContainer>
+                        <DragDropContainer>
+                            <div className={'boxes'}>2</div>
+
+                        </DragDropContainer>
+                        <DragDropContainer>
+                            <div className={'boxes'}>3</div>
+
+                        </DragDropContainer>
+                        <DragDropContainer>
+                            <div className={'boxes'}>4</div>
+
+                        </DragDropContainer>
+                        <DragDropContainer>
+                            <div className={'boxes'}>5</div>
+
+                        </DragDropContainer>
+
+
+
+                    </div>
                 </div>
 
 

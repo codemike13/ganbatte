@@ -1,6 +1,6 @@
 .batteContainer{
   /* position: absolute; */
-display: flex;
+/* display: flex; */
 justify-content: center;
 align-items: center;
 flex-direction:  column;
@@ -14,20 +14,47 @@ height: 100vh;
 }
 
 
-.content{
-  /* display:flex; */
-  justify-content: center;
+
+.contentWrapper{
+    display:flex;
+  justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
   min-width: 100%;
+  height: 100%;
+  /* background-color: rgba(25, 250, 75, .3); */
+  overflow: scroll;
+  text-align: center;
+  z-index:2;
+}
+.content{
+  display:grid;
+  
+  grid-gap: 50px;
+  flex-flow: column;
+  min-width: 100%;
   height: 90vh;
-  /* background-color: rgba(25, 0, 0, .3); */
+  background-size: 50% 100%;
+  background-color: rgba(25, 75, 0, .7);
   overflow: scroll;
 }
 
+.enlarge{
+  position: fixed;
+  top:10%;
+  right:0;
+  height:230px;
+  width:100vw;
+  background-color: rgba(75, 0, 0, .3);
+  z-index: 1;
+  
+}
+
 .boxes{
-  width:90%;
+  width:95%;
   height:200px;
 background-color:rgba(0, 125, 255, .4);
   border:1px solid black;
+  flex-grow: 2;
 }
+
