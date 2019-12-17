@@ -1,8 +1,9 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect, useContext } from "react";
 import "./uploadMonster.css";
 import MonsterPanel from "./MonsterPanel/MonsterPanel";
 import { PanelSize } from "./MonsterPanel/MonsterPanel";
 
+const PanelContext = React.createContext(PanelSize);
 class UploadMonster extends Component {
   constructor(props) {
     super(props);
@@ -22,6 +23,12 @@ class UploadMonster extends Component {
     });
   };
 
+  console = () => {
+    console.log("here");
+  };
+  componentDidUpdate = () => {
+    this.console();
+  };
   render() {
     return (
       <>
@@ -29,7 +36,7 @@ class UploadMonster extends Component {
           <div className={"contentWrapper"}>
             <div className={"content"}>
               <MonsterPanel direction="s">
-                <div className={"slider"}>
+                <div className={"sliderM"}>
                   <PanelSize.Consumer>
                     {value => (
                       <>
@@ -42,12 +49,27 @@ class UploadMonster extends Component {
                           }}
                           className={"hands"}
                           onDrag={this.handleDrag}
-                        ></div>
+                        >
+                          {this.console}
+                        </div>
                       </>
                     )}
                   </PanelSize.Consumer>
                 </div>
               </MonsterPanel>
+              <div className={"fileSelect"}>
+                <form
+                  action="fileupload"
+                  method="post"
+                  enctype="multipart/form-data"
+                >
+                  <input type="file" name="fileToUpload" />
+                  <input type="submit"></input>
+                </form>
+              </div>
+              <div id="dropzone" className={"dropZone"}>
+                {/* <File></File> */}
+              </div>
             </div>
           </div>
         </div>

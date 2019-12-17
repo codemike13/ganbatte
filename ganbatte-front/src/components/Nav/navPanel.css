@@ -19,7 +19,7 @@
 }
 
 .slider {
-  /* background-image: url('/basicFrame2.png'); */
+  background-image: url("/basicFrame2.png");
   background-position: center;
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -29,13 +29,13 @@
   height: 100vh;
   /* background-color:rgba(0, 125, 255, .4); */
   z-index: 1;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 .slideTabImg {
   display: flex;
   grid-gap: 10px;
-  flex-direction: column;
+  flex-direction: row;
   z-index: 2;
   width: 400px;
   height: 97%;
@@ -43,22 +43,41 @@
   background-image: url("/navPaneClear.png");
   align-items: center;
   /* justify-content: center; */
-  background-position: 100;
+  background-position: right;
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  overflow: hidden;
+  /* overflow: hidden; */
+  /* border: 1px solid black; */
+  z-index: 2;
+
   /* background-color: rgba(0, 125, 255, 0.4); */
 }
 
 .button {
-  width: 75px;
+  width: 100px;
   height: 25px;
   flex-grow: 1;
+  /* background-color: rgba(0, 125, 255, 0.4); */
+  border: none;
+  /* outline: none; */
+  background: transparent;
 }
 .buttonBox {
-  margin-right: 150px;
-
-  height: 50px;
+  /* margin-left: 55px; */
+  margin-top: 45px;
+  align-self: flex-start;
+  display: grid;
+  flex-direction: column;
+  /* background-color: rgba(0, 125, 255, 0.7); */
+  align-items: center;
+  justify-content: center;
+  height: 75px;
   width: 100%;
-  border: 1px solid black;
+  flex-shrink: 1;
+}
+
+.square {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(250, 0, 25, 0.3);
 }

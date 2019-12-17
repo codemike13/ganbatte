@@ -36,17 +36,6 @@ class NavPanel extends Component {
     });
   };
 
-  handleDrag = () => {
-    const [height, setHeight] = useState(0);
-    const ref = useRef(null);
-
-    useEffect(() => {
-      setHeight(ref.current.clientHeight);
-    }, []);
-    this.setState({
-      size: height
-    });
-  };
   render() {
     return (
       <>
@@ -55,13 +44,28 @@ class NavPanel extends Component {
           className={"slider"}
           size={this.state.size}
         >
-          <ResizePanel value={this.props.value} direction="e">
+          <ResizePanel value={this.props.isAuth} direction="e">
             <section className={"navTab"}>
               <section className={"slideTabImg"}>
                 <div className={"buttonBox"}>
-                  <button className={"button"}>click me</button>
-                  <button className={"button"}>click me</button>
+                  <button
+                    onClick={() => {
+                      this.props.bClicked(1);
+                    }}
+                    className={"button"}
+                  >
+                    Ganbatte Reel
+                  </button>
+                  <button
+                    onClick={() => {
+                      this.props.bClicked(2);
+                    }}
+                    className={"button"}
+                  >
+                    Profile
+                  </button>
                 </div>
+                <div className={"square"}>here</div>
               </section>
             </section>
           </ResizePanel>

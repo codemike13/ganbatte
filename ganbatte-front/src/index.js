@@ -6,9 +6,15 @@ import NavPanel from "./components/Nav/navPanelResize";
 import Ganbatte from "./components/Ganbatte/ganbatte";
 import UploadMonster from "./components/UploadMonster/uploadMonster";
 class App extends Component {
-  state = {
-    isAuth: false
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isAuth: false,
+      pane: 0
+    };
+    this.currentPane = null;
+  }
   appHandleAuthSubmit = () => {
     this.setState({
       isAuth: true
@@ -25,27 +31,58 @@ class App extends Component {
     }
   }
 
+  b1Clicked = val => {
+    switch (val) {
+      case 1:
+        this.currentPane = <Ganbatte />;
+        break;
+      case 2:
+        this.currentPane = <UploadMonster />;
+        break;
+      default:
+        break;
+    }
+    this.setState({
+      pane: val
+    });
+  };
+
+  uploadFile = (...someval) => {
+    //some api method to upload lets make it
+  };
+
   render() {
     return (
       <>
-        <div className={"container"}>
-          {this.state.isAuth ? (
-            <>
-              <>
-                <NavPanel>
-                  {/* <Ganbatte /> */}
-                  <UploadMonster />
-                </NavPanel>
-              </>
-            </>
-          ) : (
-            <Login
-              appHandleAuthSubmit={this.appHandleAuthSubmit}
-              appHandleLogout={this.appHandleLogout}
-            />
-          )}
-        </div>
+        <NavPanel
+          bClicked={this.b1Clicked}
+          isAuth={this.state.isAuth}
+          pane={this.state.pane}
+        >
+          {this.currentPane}
+          {/* <Ganbatte /> */}
+          {/* <UploadMonster /> */}
+        </NavPanel>
       </>
+      // <>
+      //   <div className={"container"}>
+      //     {this.state.isAuth ? (
+      //       <>
+      //         <>
+      //           <NavPanel>
+      //             {/* <Ganbatte /> */}
+      //             <UploadMonster />
+      //           </NavPanel>
+      //         </>
+      //       </>
+      //     ) : (
+      //       <Login
+      //         appHandleAuthSubmit={this.appHandleAuthSubmit}
+      //         appHandleLogout={this.appHandleLogout}
+      //       />
+      //     )}
+      //   </div>
+      // </>
     );
   }
 }

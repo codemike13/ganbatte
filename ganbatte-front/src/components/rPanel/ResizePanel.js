@@ -22,7 +22,7 @@ class ResizePanel extends React.Component {
 
   componentDidMount() {
     const { content } = this.refs;
-    const actualContent = content.children[0];
+    const actualContent = content.children;
 
     // Initialize the size value based on the content's current size
     this.setState({

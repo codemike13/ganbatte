@@ -92,6 +92,7 @@ class MonsterPanel extends Component {
       onDrag: this.handleDrag,
       onStop: this.handleDragEnd
     };
+
     let size = this.state.size;
     return (
       <PanelSize.Provider value={this.state.size}>
