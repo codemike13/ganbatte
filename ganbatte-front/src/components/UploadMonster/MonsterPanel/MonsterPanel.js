@@ -1,18 +1,22 @@
-import React from "react";
+import React, { Component } from "react";
+
 import { DraggableCore } from "react-draggable";
 import debounce from "lodash.debounce";
 import $ from "cash-dom";
 import classNames from "classnames/bind";
-import style from "./ResizePanel.css";
+import style from "./MonsterPanel.css";
 const PanelSize = React.createContext(null);
 export { PanelSize };
 
 let cx = classNames.bind(style);
 
-class ResizePanel extends React.Component {
+class MonsterPanel extends Component {
   constructor(props) {
     super(props);
-    this.state = { size: 0, bird: 5 };
+    this.state = {
+      size: 480,
+      openLid: false
+    };
 
     this.validateSize = debounce(this.validateSize, 100).bind(this);
   }
@@ -79,34 +83,39 @@ class ResizePanel extends React.Component {
     this.validateSize();
   };
 
+  returnSize = () => {
+    return this.state.size;
+  };
+
   render() {
     const dragHandlers = {
       onDrag: this.handleDrag,
       onStop: this.handleDragEnd
     };
-    const isHorizontal = this.isHorizontal();
-
-    let containerStyle = cx({
-      ContainerHorizontal: isHorizontal,
-      ContainerVertical: !isHorizontal
-    });
-    let contentStyle = isHorizontal
-      ? { width: this.state.size + "px" }
-      : { height: this.state.size + "px" };
-
+    let size = this.state.size;
     return (
       <PanelSize.Provider value={this.state.size}>
-        <div ref="wrapper" className={containerStyle}>
+        <div
+          value={this.state.size}
+          ref="wrapper"
+          className={"ContainerVertical"}
+        >
           <div
             key="content"
             ref="content"
-            className={"ResizeContentHorizontal"}
-            style={contentStyle}
+            className={"ResizeContentVertical"}
+            style={{ height: this.state.size + "px" }}
           >
+            {React.Children.only(this.props.children)}
             <DraggableCore key="handle" {...dragHandlers}>
-              {React.Children.only(this.props.children)}
-
-              {/* <div className={"ResizeHandleHorizontal"}> HErE small box</div> */}
+              <div className={"ResizeBarVertical"}>
+                <img className={"monsterImg"} src={"/hands.png"} alt=""></img>
+                <img
+                  src={size <= 410 ? "/down2Feed.png" : "/slide.png"}
+                  className={"slideImg"}
+                  alt=""
+                ></img>
+              </div>
             </DraggableCore>
           </div>
         </div>
@@ -115,4 +124,4 @@ class ResizePanel extends React.Component {
   }
 }
 
-export default ResizePanel;
+export default MonsterPanel;

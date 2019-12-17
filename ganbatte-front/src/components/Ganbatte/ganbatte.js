@@ -1,9 +1,5 @@
 import React, { Component } from 'react'
 import './ganbatte.css'
-import NavPanel from '../Nav/navPanel'
-import setAuthJWT from '../../api/setAuthJWT'
-import { DragDropContainer, DropTarget } from 'react-drag-drop-container';
-
 
 class Ganbatte extends Component {
     constructor(props) {
@@ -11,75 +7,83 @@ class Ganbatte extends Component {
 
         this.state = {
             isAuth: false,
+            clicked: false,
+
         }
     }
+    componentDidMount = () => {
 
-    logOut = () => {
-        this.setState({
-            isAuth: false
-        }, () => {
-            this.props.appHandleLogout()
-
-            localStorage.removeItem('jwtToken')
-
-            setAuthJWT(null)
-        })
     }
 
-    dropped(e) {
-        e.containerElem.style.visibility = 'hidden';
-    }
+
+
+
+    toggle = (type) => event => {
+        this.setState(state => {
+            return {
+                [type]: !this.state.type
+            };
+        });
+    };
+
+
+
 
 
     render() {
         return (
-            <div className={'batteContainer'}>
-                <div className={'contentWrapper'}>
+            <>
+                <div className={'batteContainer'} >
+                    <div className={'contentWrapper'}>
 
-                    <DropTarget
-                        targetKey="foo"
-                        onHit={this.dropped}
-                        on>
-                        <section className={'enlarge'}>
-                            enlarger zone
-                        </section>
-                    </DropTarget>
-                    <div className={'content'}>
+                        <div className={'content'}>
 
 
-                        <DragDropContainer
-                            size={this.props.size}
-                            targetKey='foo'
-                        >
-                            <div className={'boxes'}>  <button className='btn btn-warning' onClick={this.logOut}>
-                                Log out
-                        </button></div>
-                        </DragDropContainer>
-                        <DragDropContainer>
-                            <div className={'boxes'}>2</div>
 
-                        </DragDropContainer>
-                        <DragDropContainer>
+
+
+                            <div className={'boxes'}>
+
+                            </div>
+
+                            <div className={'boxes'} >
+                            </div>
+
+
                             <div className={'boxes'}>3</div>
 
-                        </DragDropContainer>
-                        <DragDropContainer>
+
                             <div className={'boxes'}>4</div>
 
-                        </DragDropContainer>
-                        <DragDropContainer>
+
                             <div className={'boxes'}>5</div>
 
-                        </DragDropContainer>
+
+                            <div className={'boxes'}>3</div>
+
+
+                            <div className={'boxes'}>4</div>
+
+
+                            <div className={'boxes'}>5</div>
+
+                            <div className={'boxes'}>3</div>
+
+
+                            <div className={'boxes'}>4</div>
+
+
+                            <div className={'boxes'}>5</div>
 
 
 
+                        </div>
                     </div>
+
+
+
                 </div>
-
-
-
-            </div>
+            </>
         )
 
     }

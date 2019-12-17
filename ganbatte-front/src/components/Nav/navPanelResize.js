@@ -1,70 +1,74 @@
-import React, { Component } from 'react'
-// import { DropTarget } from 'react-drag-drop-container';
-import ResizePanel from '../rPanel/ResizePanel';
-// import { PanelSize } from '../ResizePanel/ResizePanel'
+import React, { Component, useState, useEffect, useRef } from "react";
+import ResizePanel from "../rPanel/ResizePanel";
+import setAuthJWT from "../../api/setAuthJWT";
 
-import './navPanel.css';
-
+import "./navPanel.css";
 
 class NavPanel extends Component {
+  state = {
+    isOpen: false,
+    size: 0
+  };
+  consume(e) {
+    e.containerElem.style.display = "none";
+  }
 
-    state = {
-        size: 0,
-        isOpen: false
-    }
-    consume(e) {
-        e.containerElem.style.display = 'none';
-    }
+  logOut = () => {
+    this.setState(
+      {
+        isAuth: false
+      },
+      () => {
+        this.props.appHandleLogout();
 
+        localStorage.removeItem("jwtToken");
 
+        setAuthJWT(null);
+      }
+    );
+  };
 
-    update = (type, value) => event => {
-        this.setState(state => {
-            return {
-                [type]: value
-            };
-        });
-    };
+  update = (type, value) => event => {
+    this.setState(state => {
+      return {
+        [type]: value
+      };
+    });
+  };
 
-    handleDrag = (e, ui) => {
+  handleDrag = () => {
+    const [height, setHeight] = useState(0);
+    const ref = useRef(null);
 
-        this.setState((s, p) => ({ size: Math.max(10, this.state.size - (ui.deltaY * -1)) }))
-    }
-
-    onChangeValueHandler = (val) => {
-        this.setState({ value: val.target.value })
-        console.log(val);
-
-    }
-
-    render() {
-
-
-
-        return (
-
-            <>
-                <div className={'slider'}>
-
-                    <ResizePanel value={this.props.value} onChangeValue={this.onChangeValueHandler} onDrag={this.handleDrag} direction="e">
-
-
-                        <section className={'div2'}>
-                            <img className={'slideTabImg'} src='./navPaneClear.png' alt=""></img>
-
-                        </section>
-                    </ResizePanel>
-                    {React.Children.only(this.props.children)}
-
+    useEffect(() => {
+      setHeight(ref.current.clientHeight);
+    }, []);
+    this.setState({
+      size: height
+    });
+  };
+  render() {
+    return (
+      <>
+        <div
+          onDrag={this.handleDrag}
+          className={"slider"}
+          size={this.state.size}
+        >
+          <ResizePanel value={this.props.value} direction="e">
+            <section className={"navTab"}>
+              <section className={"slideTabImg"}>
+                <div className={"buttonBox"}>
+                  <button className={"button"}>click me</button>
+                  <button className={"button"}>click me</button>
                 </div>
-            </>
-
-        )
-    }
+              </section>
+            </section>
+          </ResizePanel>
+          {this.props.children}
+        </div>
+      </>
+    );
+  }
 }
-export default NavPanel
-
-// const styles = {
-//     monster: {
-//         backgroundImage: 'url("/MonsterHandsDown.png")'
-//     }
+export default NavPanel;
