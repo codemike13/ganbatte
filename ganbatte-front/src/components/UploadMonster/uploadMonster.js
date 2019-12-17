@@ -1,14 +1,14 @@
-import React, { Component, useState, useEffect, useContext } from "react";
+import React, { Component } from "react";
 import "./uploadMonster.css";
 import MonsterPanel from "./MonsterPanel/MonsterPanel";
 import { PanelSize } from "./MonsterPanel/MonsterPanel";
-
-const PanelContext = React.createContext(PanelSize);
+import { apiHandleFileUpload } from "../../api/api";
 class UploadMonster extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      selectedFile: null,
       isAuth: false,
       clicked: false
     };
@@ -26,9 +26,33 @@ class UploadMonster extends Component {
   console = () => {
     console.log("here");
   };
-  componentDidUpdate = () => {
-    this.console();
+
+  handleInputOnSubmit = event => {
+    event.preventDefault();
+    const data = new FormData();
+    data.append("file", this.state.selectedFile);
+
+    apiHandleFileUpload(this.state.selectedFile)
+      .then(result => {
+        console.log(result);
+      })
+      .catch(errorMessage => {
+        console.log(errorMessage);
+      });
   };
+
+  onChangeHandler = event => {
+    this.setState({
+      selectedFile: event.target.files[0],
+      loaded: 0
+    });
+  };
+
+  // onClickHandler = () => {
+  //   const data = new FormData();
+  //   data.append("file", this.state.selectedFile);
+  // };
+
   render() {
     return (
       <>
@@ -58,14 +82,13 @@ class UploadMonster extends Component {
                 </div>
               </MonsterPanel>
               <div className={"fileSelect"}>
-                <form
-                  action="fileupload"
-                  method="post"
-                  enctype="multipart/form-data"
-                >
-                  <input type="file" name="fileToUpload" />
-                  <input type="submit"></input>
-                </form>
+                <input
+                  type="file"
+                  name="file"
+                  onChange={this.onChangeHandler}
+                />
+
+                <input onClick={this.handleInputOnSubmit} type="submit"></input>
               </div>
               <div id="dropzone" className={"dropZone"}>
                 {/* <File></File> */}

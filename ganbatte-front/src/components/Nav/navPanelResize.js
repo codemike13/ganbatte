@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect, useRef } from "react";
+import React, { Component } from "react";
 import ResizePanel from "../rPanel/ResizePanel";
 import setAuthJWT from "../../api/setAuthJWT";
 
@@ -7,6 +7,7 @@ import "./navPanel.css";
 class NavPanel extends Component {
   state = {
     isOpen: false,
+    isAuth: false,
     size: 0
   };
   consume(e) {
@@ -48,6 +49,9 @@ class NavPanel extends Component {
             <section className={"navTab"}>
               <section className={"slideTabImg"}>
                 <div className={"buttonBox"}>
+                  <button onClick={this.logOut} className={"button"}>
+                    Log Out
+                  </button>
                   <button
                     onClick={() => {
                       this.props.bClicked(1);
@@ -62,10 +66,10 @@ class NavPanel extends Component {
                     }}
                     className={"button"}
                   >
-                    Profile
+                    Upload MOnster!
                   </button>
                 </div>
-                <div className={"square"}>here</div>
+                <div className={"square"}></div>
               </section>
             </section>
           </ResizePanel>

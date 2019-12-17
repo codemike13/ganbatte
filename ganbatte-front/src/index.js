@@ -6,15 +6,20 @@ import NavPanel from "./components/Nav/navPanelResize";
 import Ganbatte from "./components/Ganbatte/ganbatte";
 import UploadMonster from "./components/UploadMonster/uploadMonster";
 class App extends Component {
-  constructor(props) {
-    super(props);
+  state = {
+    isAuth: false,
+    pane: 0,
+    currentPane: null,
+    intro: true
+  };
 
-    this.state = {
-      isAuth: false,
-      pane: 0
-    };
-    this.currentPane = null;
-  }
+  componentDidMount = () => {
+    // setTimeout(() => {
+    //   this.setState({
+    //     intro: false
+    //   });
+    // }, 6000);
+  };
   appHandleAuthSubmit = () => {
     this.setState({
       isAuth: true
@@ -26,10 +31,6 @@ class App extends Component {
       isAuth: false
     });
   };
-  componentDidUpdate() {
-    if (this.state.isAuth) {
-    }
-  }
 
   b1Clicked = val => {
     switch (val) {
@@ -47,42 +48,39 @@ class App extends Component {
     });
   };
 
-  uploadFile = (...someval) => {
-    //some api method to upload lets make it
-  };
+  // uploadFile = (...someval) => {
+  //   //some api method to upload lets make it
+  // };
 
   render() {
     return (
       <>
-        <NavPanel
-          bClicked={this.b1Clicked}
-          isAuth={this.state.isAuth}
-          pane={this.state.pane}
+        <div
+          style={{
+            backgroundImage: this.state.intro
+              ? 'url("/ganbatteIntro.png")'
+              : 'url("/basicFrame2.png")'
+          }}
+          className={"container"}
         >
-          {this.currentPane}
-          {/* <Ganbatte /> */}
-          {/* <UploadMonster /> */}
-        </NavPanel>
+          {this.state.isAuth ? (
+            <>
+              <NavPanel
+                bClicked={this.b1Clicked}
+                isAuth={this.state.isAuth}
+                pane={this.state.pane}
+                appHandleLogout={this.appHandleLogout}
+              >
+                {this.currentPane}
+                {/* <Ganbatte /> */}
+                {/* <UploadMonster /> */}
+              </NavPanel>
+            </>
+          ) : (
+            <Login appHandleAuthSubmit={this.appHandleAuthSubmit} />
+          )}
+        </div>
       </>
-      // <>
-      //   <div className={"container"}>
-      //     {this.state.isAuth ? (
-      //       <>
-      //         <>
-      //           <NavPanel>
-      //             {/* <Ganbatte /> */}
-      //             <UploadMonster />
-      //           </NavPanel>
-      //         </>
-      //       </>
-      //     ) : (
-      //       <Login
-      //         appHandleAuthSubmit={this.appHandleAuthSubmit}
-      //         appHandleLogout={this.appHandleLogout}
-      //       />
-      //     )}
-      //   </div>
-      // </>
     );
   }
 }

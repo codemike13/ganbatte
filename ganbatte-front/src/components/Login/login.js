@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./login.css";
 import { apiAuth, apiHandleSignUpAndLogIn } from "../../api/api";
-import setAuthJWT from "../../api/setAuthJWT";
 
 class Login extends Component {
   constructor(props) {
@@ -139,21 +138,6 @@ class Login extends Component {
     }
   };
 
-  logOut = () => {
-    this.setState(
-      {
-        isAuth: false
-      },
-      () => {
-        this.props.appHandleLogout();
-
-        localStorage.removeItem("jwtToken");
-
-        setAuthJWT(null);
-      }
-    );
-  };
-
   changeImage = () => {
     this.setState(
       {
@@ -174,8 +158,6 @@ class Login extends Component {
   };
 
   render() {
-    console.log(this.state.pane);
-
     let touched = this.state.touched ? "submit touched" : "submit";
     return (
       <>
@@ -183,9 +165,6 @@ class Login extends Component {
           style={{ backgroundImage: this.state.pane }}
           className={"loginContainer"}
         >
-          {/* <div style={styles.loginContainer}> */}
-
-          {/* {!this.state.emailValid ? this.incorrectEmail() : ""} */}
           <form onSubmit={this.handleInputOnSubmit}>
             <div className={"login"}>
               <input
@@ -204,11 +183,8 @@ class Login extends Component {
               />
             </div>
 
-            {/* <span>Window size: {this.state.width} x {this.state.height}</span> */}
             <div className={"loginButton"}>
-              <button onClick={this.changeImage} className={touched}>
-                {" "}
-              </button>
+              <button onClick={this.changeImage} className={touched}></button>
             </div>
           </form>
         </div>
